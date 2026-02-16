@@ -1,7 +1,12 @@
+const reiniciar = getElementById("reiniciar")
+let nomeReal, habilidadeReal, tipoReal;
 
 dadosPokemon()
 
-async function dadosPokemon() {
+
+
+
+async function dadosPokemon(id) {
     
     try{
         const resposta = await fetch("https://pokeapi.co/api/v2/pokemon/25")
