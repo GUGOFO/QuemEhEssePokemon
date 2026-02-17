@@ -2,11 +2,13 @@ const reiniciar = document.getElementById("reiniciar");
 const btnNomes = document.querySelectorAll(".nomes");
 const btnHabilidades = document.querySelectorAll(".habilidades");
 const btnTipos = document.querySelectorAll(".tipos");
+const imagemPokemon = document.getElementById("pokemon");
 
 
 let nomes = ["", "", ""], habilidades = ["", "", ""], tipos = ["", "", ""], imagens = ["", "", ""];
 let nomeResposta, habilidadeResposta, tipoResposta, imagemResposta;
 let ids = [1,2,3];
+let click = 0;
 
 
 reiniciar.addEventListener("click",async () => {
@@ -55,11 +57,21 @@ function adicionarHtml(){
     }
 
     document.getElementById("divPerguntas").style.display = "block";
-    document.getElementById("pokemon").src = imagemResposta;
+    imagemPokemon.style.filter = " brightness(0)"
+    imagemPokemon.src = imagemResposta;
 
     btnNomes.forEach(btn => btn.classList[0] == "botoesAcertou" ? btn.classList.replace("botoesAcertou", "botoes") : btn.classList.replace("botoesErrou", "botoes"));
     btnHabilidades.forEach(btn => btn.classList[0] == "botoesAcertou" ? btn.classList.replace("botoesAcertou", "botoes") : btn.classList.replace("botoesErrou", "botoes"));
     btnTipos.forEach(btn => btn.classList[0] == "botoesAcertou" ? btn.classList.replace("botoesAcertou", "botoes") : btn.classList.replace("botoesErrou", "botoes"));
+}
+
+function motrarPokemon(){
+    let cancelar = 0;
+    btnNomes.forEach(btn => btn.classList[0] != "botoes" || cancelar++);
+    btnHabilidades.forEach(btn => btn.classList[0] != "botoes" || cancelar++);
+    btnTipos.forEach(btn => btn.classList[0] != "botoes" || cancelar++);
+    cancelar == 0 && (imagemPokemon.style.filter = " brightness(1)")
+    console.log(cancelar)
 }
 
 btnNomes.forEach(btnNome => {
@@ -68,6 +80,7 @@ btnNomes.forEach(btnNome => {
             if(btn.textContent === nomeResposta) btn.classList.replace("botoes", "botoesAcertou");
             else btn.classList.replace("botoes", "botoesErrou");
         })
+        motrarPokemon();
     })
 })
 
@@ -77,6 +90,7 @@ btnHabilidades.forEach(btnHabilidade => {
             if(btn.textContent === habilidadeResposta) btn.classList.replace("botoes", "botoesAcertou");
             else btn.classList.replace("botoes", "botoesErrou");
         })
+        motrarPokemon()
     })
 })
 
@@ -86,5 +100,6 @@ btnTipos.forEach(btnTipo => {
             if(btn.textContent === tipoResposta) btn.classList.replace("botoes", "botoesAcertou");
             else btn.classList.replace("botoes", "botoesErrou");
         })
+        motrarPokemon()
     })
 })
