@@ -18,6 +18,7 @@ h1{
     position:absolute;
     top: 12vh;
     left: 7vw;
+    filter: brightness(1); /*Nivel de dificuldade extra aqui pra jgr dps kskkasakksa*/
 }
 
 #tituloPokemon{
@@ -51,6 +52,43 @@ h1{
 .botoes{
     background: rgb(255, 203, 5);
     border: 3px solid rgb(42, 117, 187);
+    border-radius: 15px;
+    height: 8vh;
+    width: 17vw;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+.botoes:hover{
+    background: rgb(207, 167, 4);
+    cursor: pointer;
+}
+
+.botoes:active{
+    background: rgb(182, 146, 4);
+}
+
+.botoesAcertou{
+    background: rgb(34, 255, 5);
+    border: 3px solid rgb(36, 83, 9);
+    border-radius: 15px;
+    height: 8vh;
+    width: 17vw;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+.botoesErrou{
+    background: rgb(255, 5, 5);
+    border: 3px solid rgb(104, 1, 1);
     border-radius: 15px;
     height: 8vh;
     width: 17vw;
